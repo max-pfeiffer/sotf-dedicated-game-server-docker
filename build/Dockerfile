@@ -1,7 +1,7 @@
 FROM steamcmd/steamcmd:ubuntu-noble
 
 RUN apt update && \
-    apt install -y --no-install-recommends wine wine64 winbind xvfb
+    apt install -y --no-install-recommends wine wine32 wine64 winbind xvfb
 
 WORKDIR /srv/sotf
 
@@ -12,6 +12,6 @@ COPY config/dedicatedserver.cfg config/ownerswhitelist.txt /srv/sotf/userdata/
 
 RUN chmod +x entrypoint.sh
 
-EXPOSE 8766/udp 27016/udp 9700/udp
+EXPOSE 8766/udp 9700/udp 27016/udp
 
 ENTRYPOINT ["/srv/sotf/entrypoint.sh"]
