@@ -1,18 +1,17 @@
-FROM steamcmd/steamcmd:debian-bookworm
+FROM steamcmd/steamcmd:ubuntu-noble
 
-RUN dpkg --add-architecture i386 \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends --no-install-suggests software-properties-common apt-transport-https gnupg2 wget procps winbind xvfb \
-    && mkdir -pm755 /etc/apt/keyrings \
-    && wget --output-document /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
-    && wget --timestamping --directory-prefix=/etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends --no-install-suggests winehq-stable \
-    && apt-get remove -y --purge software-properties-common apt-transport-https gnupg2 wget \
-    && apt-get clean \
-    && apt-get autoremove -y \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt update && \
+    apt install -y --no-install-recommends wine wine64 winbind xvfb
 
 WORKDIR /srv/sotf
 
-RUN steamcmd +force_install_dir /srv/sotf +login anonymous +app_update 2465200 validate +quit
+RUN steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir /srv/sotf +login anonymous +app_update 2465200 validate +quit
+
+COPY entrypoint.sh  config/steam_appid.txt /srv/sotf/
+COPY config/dedicatedserver.cfg config/ownerswhitelist.txt /srv/sotf/userdata/
+
+RUN chmod +x entrypoint.sh
+
+EXPOSE 8766/udp 27016/udp 9700/udp
+
+ENTRYPOINT ["/srv/sotf/entrypoint.sh"]
