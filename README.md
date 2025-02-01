@@ -1,3 +1,8 @@
+[![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![codecov](https://codecov.io/gh/max-pfeiffer/sotf-dedicated-game-server-docker/graph/badge.svg?token=O3Y6wQopoG)](https://codecov.io/gh/max-pfeiffer/sotf-dedicated-game-server-docker)
+![pipeline workflow](https://github.com/max-pfeiffer/sotf-dedicated-game-server-docker/actions/workflows/pipeline.yaml/badge.svg)
+
 # Sons of the Forest Dedicated Game Server - Docker Image
 
 ## Docker build
