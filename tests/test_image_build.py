@@ -56,7 +56,9 @@ def test_image_build(
         response: Response = get(furl_item.url, auth=BASIC_AUTH)
 
         assert response.status_code == 200
-        assert response.json() == {"repositories": ["pfeiffermax/sotf-dedicated-game-server"]}
+        assert response.json() == {
+            "repositories": ["pfeiffermax/sotf-dedicated-game-server"]
+        }
 
         furl_item: furl = furl(f"http://{registry_container.get_registry()}")
         furl_item.path /= "v2/pfeiffermax/sotf-dedicated-game-server/tags/list"
