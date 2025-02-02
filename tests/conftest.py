@@ -2,6 +2,9 @@
 
 import pytest
 from python_on_whales import Builder, DockerClient
+from testcontainers.registry import DockerRegistryContainer
+
+from tests.constants import REGISTRY_PASSWORD, REGISTRY_USERNAME
 
 
 @pytest.fixture(scope="session")
@@ -26,3 +29,16 @@ def buildx_builder(docker_client: DockerClient) -> Builder:
     yield builder
     docker_client.buildx.stop(builder)
     docker_client.buildx.remove(builder)
+
+
+@pytest.fixture(scope="session")
+def registry_container(docker_client: DockerClient) -> DockerRegistryContainer:
+    """Fixture providing a Docker registry container instance.
+
+    :param docker_client:
+    :return:
+    """
+    with DockerRegistryContainer(
+        username=REGISTRY_USERNAME, password=REGISTRY_PASSWORD
+    ).with_bind_ports(5000, 5000) as registry_container:
+        yield registry_container
