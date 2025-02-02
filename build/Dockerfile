@@ -7,10 +7,9 @@ WORKDIR /srv/sotf
 
 RUN steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir /srv/sotf +login anonymous +app_update 2465200 validate +quit
 
-COPY entrypoint.sh  config/steam_appid.txt config/config_creator.py /srv/sotf/
+COPY config/config_creator.py /
+COPY entrypoint.sh  config/steam_appid.txt /srv/sotf/
 COPY config/ownerswhitelist.txt /srv/sotf/userdata/
-
-RUN python3 config_creator.py >> ./userdata/dedicatedserver.cfg
 
 RUN chmod +x entrypoint.sh
 

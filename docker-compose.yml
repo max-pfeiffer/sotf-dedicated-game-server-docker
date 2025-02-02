@@ -1,0 +1,18 @@
+services:
+  sotf-server:
+    image: sotf-server
+    build:
+      context: build
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - SERVERNAME="Your server name could be here"
+      - PASSWORD=letmein
+      - SKIPNETWORKACCESSIBILITYTEST=true
+#   Optional:
+#    volumes:
+#      - /path/to/folder/SonsOfTheForest:/srv/sotf
+    ports:
+      - "8766:8766/udp"
+      - "9700:9700/udp"
+      - "27016:27016/udp"
