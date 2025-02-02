@@ -2,7 +2,7 @@
 name = "sotf-dedicated-game-server-docker"
 version = "0.1.0"
 description = ""
-authors = ["Max Pfeiffer <max@maxpfeiffer.ch>", "ChsRmb"]
+authors = ["Max Pfeiffer <max@maxpfeiffer.ch>", "ChsRmb <chsrmb@chsrmb.de>"]
 readme = "README.md"
 package-mode = false
 
