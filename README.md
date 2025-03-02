@@ -5,20 +5,20 @@
 
 # Sons of the Forest Dedicated Game Server - Docker Image
 
-## Docker build
+
+## Usage
+### Docker build
 ```shell
 docker build --tag sotf .
 ```
-## Docker Run
+### Docker Run
 ```shell
 docker run --rm -it --publish 8766:8766/udp --publish 9700:9700/tcp --publish 27016:27016/tcp sotf
 ```
 
-## Information Sources
-* [SteamDB](https://steamdb.info/app/2465200/info/)
-* [Dedicated Server Configuration Guide](https://steamcommunity.com/sharedfiles/filedetails/?id=2992700419)
 
-## Environment Variables:
+
+## Environment Variables
 
 ### Server Configuration
 | Key                          | Values                                                                | Default Value  | Description                                                                                                                                                                                                                                                                                                                                                                 |
@@ -82,6 +82,8 @@ These settings are only required if the game mode is set to **Custom**
 | ONEHITTOCUTTREE         | Bool                                     | false         | Enable chopping tree with a single hit.                                                                         |
 
 
+All descriptions are from [Dedicated Server Configuration Guide](https://steamcommunity.com/sharedfiles/filedetails/?id=2992700419)
 
-
-All descriptions are from [Dedicated Server Configuration Guide](https://steamcommunity.com/sharedfiles/filedetails/?id=2992700419&snr=1_2108_9__2107)
+## Information Sources
+* [SteamDB](https://steamdb.info/app/2465200/info/)
+* [SOTF Dedicated Server Configuration Guide](https://steamcommunity.com/sharedfiles/filedetails/?id=2992700419)
